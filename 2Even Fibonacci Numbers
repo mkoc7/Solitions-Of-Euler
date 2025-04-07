@@ -1,0 +1,93 @@
+Fibonacci dizisindeki her yeni terim, önceki iki terimin toplamı ile oluşturulur. 1 ve 2 ile başlayarak ilk 10 terim şu şekildedir:
+
+1, 2, 3, 5, 8, 13, 21, 34, 55, 89, …
+
+Sonra şu soru soruluyor:
+
+> Dört milyonu geçmeyen Fibonacci dizisi terimlerini ele alarak, çift sayıların toplamını bulun.
+Fibonacci Dizisinde Çift Sayıların Toplamı 🔢 🧮 💯
+Problem Tanımı 🎯 📝 🔍
+Fibonacci dizisinde (matematiksel dizi) her yeni terim, önceki iki terimin toplamı (toplama işlemi) ile oluşturulur. 1 ve 2 ile başlayarak ilk 10 terim şu şekildedir:
+
+1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+
+İstenilen: 4 milyonu geçmeyen Fibonacci dizisi terimlerini ele alarak, çift sayıların (2'ye tam bölünebilen sayılar) toplamını bulmak. 🧩 🔍 🎲
+
+Görsel Açıklama 📊 🎨 👁️
+Fibonacci Dizisi Büyüme Şeması 🌱 📈 🔄
+Code
+    1 → 2 → 3 → 5 → 8 → 13 → 21 → ...
+    ↑   ↑   ↑   ↑   ↑    ↑    ↑
+    |   |   |   |   |    |    |
+    └───┼───┘   |   |    |    |
+        └───────┼───┘    |    |
+                └─────────────┘
+Çift Fibonacci Sayıları Tablosu 📋 🔢 ✅
+Sıra	Fibonacci Sayısı	Çift mi?	Toplama Eklenir mi?
+1	1	Hayır	❌
+2	2	Evet	✅
+3	3	Hayır	❌
+4	5	Hayır	❌
+5	8	Evet	✅
+6	13	Hayır	❌
+7	21	Hayır	❌
+8	34	Evet	✅
+...	...	...	...
+Çözüm Yaklaşımı 🧠 💡 🔧
+Fibonacci dizisini oluşturup, 4 milyonu geçmeyene kadar çift sayıları toplayacağız. Doğadaki pek çok büyüme modelinde (örneğin tavşan populasyonu, bal arısı soyağacı) karşımıza çıkan Fibonacci dizisi, burada matematik dünyasının harika bir örneği olarak karşımıza çıkıyor! 🐰 🐝 🌿
+
+Python
+# Bu kod, 4 milyonu geçmeyen Fibonacci sayılarının çift olanlarının toplamını bulur
+def fibonacci_cift_toplam(limit):
+    a, b = 1, 2  # İlk iki Fibonacci sayısı (başlangıç değerleri)
+    toplam = 0   # Çift sayıların toplamını tutacak değişken
+    
+    # Limit değerine kadar döngü devam eder
+    while a <= limit:
+        # Eğer sayı çift ise toplama ekle
+        if a % 2 == 0:  # Modülo operatörü ile çift sayı kontrolü
+            toplam += a
+        
+        # Sonraki Fibonacci sayısını hesapla
+        a, b = b, a + b  # Python'da çoklu atama özelliği ile değerleri güncelleme
+    
+    return toplam
+
+# Fonksiyonu çağırıp sonucu yazdır
+sonuc = fibonacci_cift_toplam(4000000)
+print(f"4 milyonu geçmeyen çift Fibonacci sayılarının toplamı: {sonuc}")
+Gerçek Hayat Benzetmesi 🌍 🏡 🚶
+Fibonacci dizisini bir merdiven çıkışına benzetebiliriz. Her adımda bir veya iki basamak çıkabilirsiniz. 🪜 👟 🏃‍♂️ N basamaklı bir merdiveni çıkmanın kaç farklı yolu var? İşte bu sayı tam olarak (N+1). Fibonacci sayısıdır! Mesela, 5 basamaklı bir merdiveni 8 farklı şekilde çıkabilirsiniz. 🧗‍♀️ 🔢 🧩
+
+Bizim problemimizde ise, binanın en fazla 4 milyon basamağı olabilir ve biz sadece çift sayıda konfigürasyona sahip katları sayıyoruz! 🏢 🔢 🧮
+
+Kod Çıktısı ve Sonuç 🖥️ 📊 🎯
+Code
+4 milyonu geçmeyen çift Fibonacci sayılarının toplamı: 4613732
+İşte tüm çift Fibonacci sayıları (4 milyonun altında olanlar): 💰 💎 🏆
+
+2
+8
+34
+144
+610
+2584
+10946
+46368
+196418
+832040
+3524578
+Bu sayıların toplamı: 4,613,732 🎉 🎊 🏁
+
+Özet Görselleştirme 📈 📊 📱
+Code
+Fibonacci Dizisi: 1→2→3→5→8→13→ ... →3524578→5702887(>4M)
+                     ^   ^    ^            ^
+                     |   |    |            |
+                    Çift Çift Çift        Çift
+                     |   |    |            |
+                     +---+----+-----......-+
+                             ||
+                             \/
+                          4,613,732
+Gördüğünüz gibi matematik sadece soyut formüller değil, tavşanlardan merdivenlere kadar her yerde! 🐇 🧠 🌈 Bu problem çözümüyle kodlama ve matematik el ele vererek güzel bir dans sergiledi! 💃 🕺 🎭 Fibonacci dizisi, doğanın kodunda saklı olduğu gibi, kodumuzda da güzelce akıyor! 🌊 🏄‍♂️ 💻
