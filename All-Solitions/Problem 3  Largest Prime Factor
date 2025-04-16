@@ -1,0 +1,37 @@
+# Finding the Largest Prime Factor / En Büyük Asal Çarpanı Bulma
+
+To find the largest prime factor of 600851475143, I'll implement an efficient algorithm that: / 600851475143 sayısının en büyük asal çarpanını bulmak için etkili bir algoritma uygulayacağım:
+1. Tries dividing by smaller primes first / 1. Önce küçük asal sayılarla bölme işlemi dener
+2. Only needs to check up to the square root of the remaining number / 2. Sadece kalan sayının kareköküne kadar kontrol etmesi gerekir
+
+## Solution / Çözüm
+
+```python
+def largest_prime_factor(n):
+    # Start with smallest prime factor / En küçük asal çarpanla başla
+    i = 2
+    
+    # Continue until i*i > n (square root optimization) / i*i > n olana kadar devam et (karekök optimizasyonu)
+    while i * i <= n:
+        # If i divides n, divide n by i as many times as possible / Eğer i, n'yi tam bölüyorsa, n'yi i'ye mümkün olduğu kadar çok böl
+        if n % i == 0:
+            n //= i
+        else:
+            # Try next potential factor / Bir sonraki potansiyel çarpanı dene
+            i += 1
+    
+    # If n is greater than 1 at the end, n itself is prime / Eğer sonunda n 1'den büyükse, n'nin kendisi asaldır
+    if n > 1:
+        return n
+    else:
+        return i
+```
+
+Applying this to 600851475143: / Bunu 600851475143 sayısına uygularsak:
+
+- First divide by 71: 600851475143 ÷ 71 = 8462696833 / İlk olarak 71'e böl: 600851475143 ÷ 71 = 8462696833
+- Then divide by 839: 8462696833 ÷ 839 = 10086647 / Sonra 839'a böl: 8462696833 ÷ 839 = 10086647
+- Then divide by 1471: 10086647 ÷ 1471 = 6857 / Ardından 1471'e böl: 10086647 ÷ 1471 = 6857
+- 6857 is prime and cannot be further divided / 6857 asaldır ve daha fazla bölünemez
+
+Therefore, the largest prime factor of 600851475143 is **6857**. / Bu nedenle, 600851475143 sayısının en büyük asal çarpanı **6857**'dir.
